@@ -1,0 +1,43 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(192, 192, 192);
+}
+
+body{
+    width: 100%;
+}
+
+header, main, footer{
+    border: 3px solid rgb(0, 0, 0);
+}
+
+main{
+    min-height: 86vh;
+}
+
+main, main *{
+    background-color: rgb(255, 255, 255);
+}
+
+.barra{
+    width: 100%;
+    border-bottom: 3px solid rgb(0, 0, 0);
+    background-color: rgb(141, 141, 141);
+}
+
+.barra-item{
+    margin: auto;
+    background-color: rgb(141, 141, 141);
+}
+
+.barra svg{
+    background-color: rgb(141, 141, 141);
+}
+
+#detail-card{
+    min-width: 55vw;
+}
+
+
