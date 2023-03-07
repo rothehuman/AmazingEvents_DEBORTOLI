@@ -7,7 +7,7 @@ function dateEvents(events, datee){
     for(let event of events){
         if (event.date == datee) {
             cardsE += `
-                <div class="card m-3" style="width: 18rem; height: 25rem;">
+                <div class="card m-3" style="width: 18rem; height: 22rem;">
                 <img src="${event.image}" class="card-img-top p-2" alt="...">
                 <div class="card-body text-center card-body-header my-0 py-0">
                     <h5 class="card-title">${event.name}</h5>
@@ -30,7 +30,7 @@ let tarjetas = '';
 
 for(let event of data.events){
     tarjetas += `
-    <div class="card m-3" style="width: 18rem; height: 25rem;">
+    <div class="card m-3" style="width: 18rem; height: 22rem;">
     <img src="${event.image}" class="card-img-top p-2" alt="..."></img>    
     <div class="card-body text-center card-body-header my-0 py-0">
         <h5 class="card-title">${event.name}</h5>
