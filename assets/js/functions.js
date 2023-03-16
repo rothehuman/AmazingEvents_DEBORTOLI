@@ -1,6 +1,6 @@
-function addCards(array){
+function addCards(array, cardsContainer){
     if(array.length == 0){
-        card.innerHTML = `<h2>Event not found</h2>`
+        cardsContainer.innerHTML = `<h2>Event not found</h2>`
         return
     }
     let tarjetas = ''
@@ -19,13 +19,14 @@ function addCards(array){
         </div>
     `
     })
-    card.innerHTML = tarjetas
+    cardsContainer.innerHTML = tarjetas;
 }
 
-function createCheckboxes(array){
-    let arrayCards = array.map(dataa => dataa.category)
+function createCheckboxes(array, checksContainer){
+    let arrayCards = array.map(data => data.category)
     let setCard = new Set(arrayCards)
     let arrayChecks = Array.from(setCard)
+    arrayChecks.sort()
     let checkboxes = ''
     arrayChecks.forEach(category => {
         checkboxes += `
@@ -39,17 +40,17 @@ function createCheckboxes(array){
         </li>
         `
     })
-    checkboxContainer.innerHTML = checkboxes
+    checksContainer.innerHTML = checkboxes;
 }
 
-function filter(){
-    let primerFiltro = textFilter(data.events,input.value);
-    let segundoFiltro = categoryFilter(primerFiltro);
-    addCards(segundoFiltro);
+function filter(array, text){
+    let textFilterCards = textFilter(array,text);
+    let checkTextFilterCards = categoryFilter(textFilterCards);
+    return checkTextFilterCards;
 }
 
-function textFilter(array,texto){
-    let arrayFiltrado = array.filter(elemento => elemento.name.toLowerCase().includes(texto.toLowerCase()))
+function textFilter(array,text){
+    let arrayFiltrado = array.filter(elemento => elemento.name.toLowerCase().includes(text.toLowerCase()))
     return arrayFiltrado
 }
 
@@ -59,10 +60,31 @@ function categoryFilter(array){
     let arrayChecksChecked = arrayChecks.filter(check => check.checked)
     let arrayChecksCheckedValues = arrayChecksChecked.map(checkChecked => checkChecked.value)
     let arrayFiltrado = array.filter(element => arrayChecksCheckedValues.includes(element.category))
+    
     if(arrayChecksChecked.length > 0){
         return arrayFiltrado
     }
     return array
 }
 
-export {addCards, createCheckboxes, filter, textFilter, categoryFilter};
+function upcomingEvents(date, events, container){
+    let futureEvents = [];
+    events.forEach(event => {
+        if (date < event.date) {
+            futureEvents.push(event)
+        }
+    });
+    addCards(futureEvents, container)
+}
+
+function pastEvents(date, events, container){
+    let futureEvents = [];
+    events.forEach(event => {
+        if (date > event.date) {
+            futureEvents.push(event)
+        }
+    });
+    addCards(futureEvents, container)
+}
+
+export {addCards, createCheckboxes, filter, textFilter, categoryFilter, upcomingEvents, pastEvents};
