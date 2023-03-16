@@ -1,23 +1,39 @@
-function addCards(array, cardsContainer){
+function addCards(array, cardsContainer, home=false){
     if(array.length == 0){
         cardsContainer.innerHTML = `<h2>Event not found</h2>`
         return
     }
     let tarjetas = ''
     array.forEach(event => {
-        tarjetas += `
-        <div class="card m-3" style="width: 18rem; height: 22rem;">
-        <img src="${event.image}" class="card-img-top p-2" alt="...">
-        <div class="card-body text-center card-body-header my-0 py-0">
-            <h5 class="card-title">${event.name}</h5>
-            <p class="card-text">${event.description}</p>
-        </div>
-        <div class="card-body d-flex flex-row justify-content-between">
-            <p>Price $${event.price}</p>
-            <a href="../../pages/details.html?id=${event._id}" class="btn btn-light btn-outline-dark">view more</a>
-        </div>
-        </div>
-    `
+        if (home){
+            tarjetas += `
+                <div class="card m-3" style="width: 18rem; height: 22rem;">
+                <img src="${event.image}" class="card-img-top p-2" alt="...">
+                <div class="card-body text-center card-body-header my-0 py-0">
+                    <h5 class="card-title">${event.name}</h5>
+                    <p class="card-text">${event.description}</p>
+                </div>
+                <div class="card-body d-flex flex-row justify-content-between">
+                    <p>Price $${event.price}</p>
+                    <a href="./pages/details.html?id=${event._id}" class="btn btn-light btn-outline-dark">view more</a>
+                </div>
+                </div>
+            `
+        }else{
+            tarjetas +=    `
+            <div class="card m-3" style="width: 18rem; height: 22rem;">
+            <img src="${event.image}" class="card-img-top p-2" alt="...">
+            <div class="card-body text-center card-body-header my-0 py-0">
+                <h5 class="card-title">${event.name}</h5>
+                <p class="card-text">${event.description}</p>
+            </div>
+            <div class="card-body d-flex flex-row justify-content-between">
+                <p>Price $${event.price}</p>
+                <a href="../pages/details.html?id=${event._id}" class="btn btn-light btn-outline-dark">view more</a>
+            </div>
+            </div>
+        `
+        }
     })
     cardsContainer.innerHTML = tarjetas;
 }
