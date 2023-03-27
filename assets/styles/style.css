@@ -7,14 +7,37 @@
 
 body{
     width: 100%;
+    min-height: 100vh;
 }
 
-header, main, footer{
-    border: 3px solid rgb(0, 0, 0);
+header{
+    min-height: 8vh;
 }
 
 main{
-    min-height: 79.5vh;
+    min-height: 83vh;
+}
+
+footer{
+    height: 9vh;
+}
+
+@media (min-height: 950px) {
+    header{
+        min-height: 8vh;
+    }
+    
+    main{
+        min-height: 86vh;
+    }
+    
+    footer{
+        height: 6vh;
+    }
+  }
+
+header, main, footer{
+    border: 3px solid rgb(0, 0, 0);
 }
 
 main, main *{
